@@ -21,10 +21,12 @@ const factorList = factorIds
 
 // The example response as bars, highest probability first (the API's order).
 // Factors under 0.5 are dimmed, matching the llms.txt review threshold.
+// Each row toggles open the factor's question and how to fix it.
 const scoreList = Object.entries(exampleResponse.factors)
 	.map(([id, { probability }]) => {
 		const hot = probability >= 0.5 ? " hot" : "";
-		return `<li class="score${hot}"><a href="#${id}">${id}</a><span class="bar"><span style="width: ${Math.round(probability * 100)}%"></span></span><span class="value">${probability.toFixed(2)}</span></li>`;
+		const factor = factors[id as keyof typeof factors];
+		return `<li class="score${hot}"><details><summary><span class="id">${id}</span><span class="bar"><span style="width: ${Math.round(probability * 100)}%"></span></span><span class="value">${probability.toFixed(2)}</span></summary><div class="detail"><p>${escapeHtml(factor.instructions)}</p><p><span class="fix">Fix:</span> ${escapeHtml(factor.advice)}</p></div></details></li>`;
 	})
 	.join("\n");
 
@@ -108,8 +110,13 @@ pre { margin: 0; font: 19px/30px var(--mono); white-space: pre-wrap; overflow-wr
 #copy { position: absolute; top: 12px; right: 12px; padding: 3px 10px; font: 600 14px/20px var(--mono); color: var(--bg); background: var(--pink); border: 0; border-radius: 4px; cursor: pointer; }
 #copy:hover { filter: brightness(1.15); }
 .scores { display: flex; flex-direction: column; gap: 14px; font: 19px/26px var(--mono); color: var(--dim); }
-.score { display: flex; align-items: center; gap: 16px; }
-.score a { width: 230px; flex-shrink: 0; overflow-wrap: anywhere; }
+.score summary { display: flex; align-items: center; gap: 16px; cursor: pointer; list-style: none; }
+.score summary::-webkit-details-marker { display: none; }
+.score summary:hover .id, .score [open] .id { color: var(--pink); }
+.score .id { width: 230px; flex-shrink: 0; overflow-wrap: anywhere; }
+.detail { margin: 12px 0 8px; padding: 14px 18px; border-left: 2px solid var(--pink); background: var(--box); font: 17px/26px Inter, system-ui, sans-serif; color: var(--prose); }
+.detail p + p { margin-top: 8px; }
+.detail .fix { font-weight: 600; color: var(--ink); }
 .bar { flex: 1; height: 10px; border-radius: 2px; background: var(--track); }
 .bar span { display: block; height: 100%; border-radius: 2px; background: var(--cold); }
 .value { width: 56px; flex-shrink: 0; text-align: right; }
@@ -144,8 +151,9 @@ footer a { display: inline-flex; align-items: center; gap: 14px; }
 	pre { font-size: 15px; line-height: 24px; }
 	.box:has(#copy) { padding-top: 48px; }
 	.scores { gap: 10px; font-size: 13px; line-height: 20px; }
-	.score { gap: 10px; }
-	.score a { width: 165px; }
+	.score summary { gap: 10px; }
+	.score .id { width: 165px; }
+	.detail { font-size: 15px; line-height: 24px; }
 	.value { width: 40px; }
 	section { padding-top: 80px; }
 	.row .name { font-size: 22px; line-height: 28px; }
