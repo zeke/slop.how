@@ -87,14 +87,25 @@ describe("GET / (website)", () => {
 		const list = html.match(
 			/<ul class="scores" id="response">([\s\S]*?)<\/ul>/,
 		)?.[1];
-		const ids = [...(list ?? "").matchAll(/<a href="#(\w+)">/g)].map(
-			(m) => m[1],
-		);
+		const ids = [
+			...(list ?? "").matchAll(/<summary><span class="id">(\w+)<\/span>/g),
+		].map((m) => m[1]);
 		expect(ids).toEqual(Object.keys(exampleResponse.factors));
 		expect(list).toContain(
-			'<li class="score hot"><a href="#canned_opening">canned_opening</a><span class="bar"><span style="width: 95%"></span></span><span class="value">0.95</span></li>',
+			'<li class="score hot"><details><summary><span class="id">canned_opening</span><span class="bar"><span style="width: 95%"></span></span><span class="value">0.95</span></summary>',
 		);
-		expect(list).toMatch(/<li class="score"><a href="#hype_adjectives">/);
+		expect(list).toMatch(
+			/<li class="score"><details><summary><span class="id">hype_adjectives<\/span>/,
+		);
+	});
+
+	it("toggles open each factor's question and fix from its score", async () => {
+		const html = await (await get("https://slop.how/")).text();
+		const factor = factors.canned_opening;
+		const esc = (s: string) => s.replaceAll("&", "&amp;");
+		expect(html).toContain(
+			`<div class="detail"><p>${esc(factor.instructions)}</p><p><span class="fix">Fix:</span> ${esc(factor.advice)}</p></div>`,
+		);
 	});
 
 	it("lists every model with its price", async () => {
