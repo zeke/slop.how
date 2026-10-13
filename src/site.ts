@@ -96,7 +96,9 @@ nav { display: flex; justify-content: space-between; align-items: center; gap: 2
 nav div { display: flex; align-items: center; gap: 28px; }
 nav .gh { color: var(--ink); display: inline-flex; }
 .hero { padding: 96px 0 80px; text-align: center; }
-h1 { font: 400 29.9cqi/0.93 Creepster, system-ui, sans-serif; letter-spacing: -0.01em; color: var(--pink); filter: url(#ooze); }
+h1 { font: 400 29.9cqi/0.93 Creepster, system-ui, sans-serif; letter-spacing: -0.01em; color: var(--pink); }
+h1 span { filter: url(#ooze); }
+h1 .dot { filter: url(#ooze-dot); }
 .tagline { padding-top: 24px; font-weight: 600; font-size: clamp(28px, 3.4cqi, 44px); line-height: 1.2; letter-spacing: -0.02em; text-wrap: balance; }
 .split { display: grid; grid-template-columns: 600fr 648fr; gap: 48px; }
 .readout { padding-top: 48px; border-top: 1px solid var(--rule); align-items: start; }
@@ -156,6 +158,10 @@ footer a { display: inline-flex; align-items: center; gap: 14px; }
 <feTurbulence id="ooze-noise" type="fractalNoise" baseFrequency="0.008 0.014" numOctaves="1" seed="3"/>
 <feDisplacementMap id="ooze-map" in="SourceGraphic" scale="48" xChannelSelector="R" yChannelSelector="G"/>
 </filter>
+<filter id="ooze-dot" x="-50%" y="-50%" width="200%" height="200%">
+<feTurbulence id="ooze-dot-noise" type="fractalNoise" baseFrequency="0.008 0.014" numOctaves="1" seed="3"/>
+<feDisplacementMap id="ooze-dot-map" in="SourceGraphic" scale="12" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
 </svg>
 <main>
 <nav>
@@ -168,7 +174,7 @@ footer a { display: inline-flex; align-items: center; gap: 14px; }
 </div>
 </nav>
 <div class="hero">
-<h1>slop.how</h1>
+<h1><span>slop</span><span class="dot">.</span><span>how</span></h1>
 <p class="tagline">${tagline}</p>
 </div>
 <div class="split readout">
@@ -240,6 +246,9 @@ ${modelList}
 const heading = document.querySelector("h1");
 const noise = document.getElementById("ooze-noise");
 const map = document.getElementById("ooze-map");
+// The period is too small to survive full displacement, so it gets a quarter of it.
+const dotNoise = document.getElementById("ooze-dot-noise");
+const dotMap = document.getElementById("ooze-dot-map");
 const wave = (t, a, b, pa, pb) => 0.6 * Math.sin((2 * Math.PI * t) / a + pa) + 0.4 * Math.sin((2 * Math.PI * t) / b + pb);
 const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
 function ooze(ms) {
@@ -249,6 +258,8 @@ function ooze(ms) {
 	const fy = (0.014 + 0.004 * wave(t, 6.1, 11.7, 2.1, 0.4)) * k;
 	noise.setAttribute("baseFrequency", fx.toFixed(5) + " " + fy.toFixed(5));
 	map.setAttribute("scale", (48 / k).toFixed(1));
+	dotNoise.setAttribute("baseFrequency", fx.toFixed(5) + " " + fy.toFixed(5));
+	dotMap.setAttribute("scale", (12 / k).toFixed(1));
 	if (!still) requestAnimationFrame(ooze);
 }
 requestAnimationFrame(ooze);

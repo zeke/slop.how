@@ -66,8 +66,10 @@ describe("GET / (website)", () => {
 
 	it("oozes the wordmark with a drifting SVG displacement filter", async () => {
 		const html = await (await get("https://slop.how/")).text();
-		expect(html).toMatch(/h1 \{[^}]*filter: url\(#ooze\)/);
+		expect(html).toMatch(/h1 span \{[^}]*filter: url\(#ooze\)/);
 		expect(html).toContain('<filter id="ooze"');
+		expect(html).toContain('<span class="dot">.</span>');
+		expect(html).toContain('<filter id="ooze-dot"');
 		expect(html).toContain('<feTurbulence id="ooze-noise"');
 		expect(html).toContain("prefers-reduced-motion: reduce");
 	});
