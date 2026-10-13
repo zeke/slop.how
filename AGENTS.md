@@ -73,7 +73,8 @@ Requests are capped at 500,000 characters because the API is unauthenticated.
 ## CI/CD
 
 `.github/workflows/ci.yml` runs lint, typecheck, and tests on PRs and pushes
-to main. Pushes to main then deploy with `cf deploy`, using the
+to main. Pushes to main, and manual runs on main (`gh workflow run ci.yml`),
+then deploy with `cf deploy`, using the
 `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repo secrets. The token is
 named "clef-slop-detector GitHub Actions deploy" and is scoped to Workers
 Scripts Write and Account Settings Read on the personal account, plus Zone
