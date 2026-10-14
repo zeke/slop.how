@@ -179,3 +179,21 @@ All three miss single mild instances of rhetorical_qa, reflexive_triplets, and s
 - `@cloudflare/vitest-pool-workers` was renamed to `@cloudflare/vitest-plugin`. It isn't used, because Clef is always mocked in tests.
 - `@hono/zod-openapi`: calling `.openapi({ description })` on a named schema mutates the shared component. Don't attach per-use descriptions to named schemas.
 - Biome sometimes needs a second pass to settle formatting; `script/lint --fix` runs check then format.
+
+## Media evaluation
+
+- `script/evaluate-media <manifest.json> <output-dir> [plan|run]` runs the local
+  experiment for issue #17. The default `plan` validates assets without inference.
+  Requires `ffprobe` and authenticated `cf`; `run` uses the project's CLI via npx.
+- Protocol and limitations: `evaluation/media/README.md`; first findings and
+  next steps: `evaluation/media/FINDINGS.md`. Draft questions and
+  validated schemas: `script/media-eval/core.ts`. Production text factors and
+  endpoints are unchanged by this experiment.
+- Keep labels independent of model scores and provenance. Related media must
+  stay in the same source group/split. Assistant labels are provisional; only
+  human-reviewed independent held-out groups can support the launch gate.
+- Raw assets and live runs go in ignored `evaluation/media/.local/`. Each run
+  directory enforces a $1 estimated inference budget, including reservations for
+  failed/interrupted attempts; budgets are not shared across directories.
+- Keep this section and the evaluation protocol current when changing the
+  runner, dataset contract, questions, budget behavior, or evaluation findings.

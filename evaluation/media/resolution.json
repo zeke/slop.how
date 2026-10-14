@@ -1,0 +1,89 @@
+{
+	"version": "2026-10-13-resolution-1",
+	"samples": [
+		{
+			"id": "veo-480",
+			"group": "slop-cannon",
+			"split": "development",
+			"modality": "video",
+			"file": ".local/assets/veo-480.mp4",
+			"sha256": "631051ca5cdada63e79dedba0003a26a81570d7783622e627884828d6cd2f20f",
+			"source": "Derived from pilot veo-720; source hash b96355dbcaff0088d3b33eca03b727444d4c555d9c46771716a7376bf0ee0b8d",
+			"provenance": "ai",
+			"width": 854,
+			"height": 480,
+			"labeler": "assistant-provisional",
+			"notes": "Controlled representation probe; no accuracy labels. ffmpeg -i veo-720.mp4 -vf scale=-2:480 -c:v libx264 -crf 18 -c:a copy",
+			"labels": {
+				"garbled_text": "unassessable",
+				"plastic_sheen": "unassessable",
+				"anatomy_errors": "unassessable",
+				"stock_cliche": "unassessable",
+				"temporal_morphing": "unassessable"
+			},
+			"durationSeconds": 8.0
+		},
+		{
+			"id": "veo-silent-720",
+			"group": "slop-cannon",
+			"split": "development",
+			"modality": "video",
+			"file": ".local/assets/veo-silent-720.mp4",
+			"sha256": "3703107817fa10b56d9411519069aa8e7a47c65f2f11d2ad14f2e85e0a31954d",
+			"source": "Derived from pilot veo-720; source hash b96355dbcaff0088d3b33eca03b727444d4c555d9c46771716a7376bf0ee0b8d",
+			"provenance": "ai",
+			"width": 1280,
+			"height": 720,
+			"labeler": "assistant-provisional",
+			"notes": "Controlled representation probe; no accuracy labels. ffmpeg -i veo-720.mp4 -c:v copy -an",
+			"labels": {
+				"garbled_text": "unassessable",
+				"plastic_sheen": "unassessable",
+				"anatomy_errors": "unassessable",
+				"stock_cliche": "unassessable",
+				"temporal_morphing": "unassessable"
+			},
+			"durationSeconds": 8.0
+		},
+		{
+			"id": "veo-frame-720",
+			"group": "slop-cannon",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/veo-frame-720.png",
+			"sha256": "8e530d18a69f9aae65d73f2dd781f5bc4225ea2e5d9f681624623b7751b2d1cd",
+			"source": "Derived from pilot veo-720; source hash b96355dbcaff0088d3b33eca03b727444d4c555d9c46771716a7376bf0ee0b8d",
+			"provenance": "ai",
+			"width": 1280,
+			"height": 720,
+			"labeler": "assistant-provisional",
+			"notes": "Controlled representation probe; no accuracy labels. ffmpeg -ss 2 -i veo-720.mp4 -frames:v 1",
+			"labels": {
+				"garbled_text": "unassessable",
+				"plastic_sheen": "unassessable",
+				"anatomy_errors": "unassessable",
+				"stock_cliche": "unassessable"
+			}
+		},
+		{
+			"id": "veo-frame-480",
+			"group": "slop-cannon",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/veo-frame-480.png",
+			"sha256": "ab8806c8a09e7095e355fe62efcb5db45fa8e294d9d84c91ba0bf572164135af",
+			"source": "Derived from pilot veo-720; source hash b96355dbcaff0088d3b33eca03b727444d4c555d9c46771716a7376bf0ee0b8d",
+			"provenance": "ai",
+			"width": 854,
+			"height": 480,
+			"labeler": "assistant-provisional",
+			"notes": "Controlled representation probe; no accuracy labels. ffmpeg -ss 2 -i veo-720.mp4 -frames:v 1 -vf scale=-2:480",
+			"labels": {
+				"garbled_text": "unassessable",
+				"plastic_sheen": "unassessable",
+				"anatomy_errors": "unassessable",
+				"stock_cliche": "unassessable"
+			}
+		}
+	]
+}

@@ -1,0 +1,511 @@
+{
+	"version": "2026-10-13-pilot-1",
+	"samples": [
+		{
+			"id": "image-01",
+			"group": "avocado-blog",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/image-01.jpg",
+			"sha256": "f17bca391e34111f9471da541bbadb7742ac9b65235f31feec06662f4fe0e8a8",
+			"source": "https://zeke.sikelianos.com/avocado-armchair/garden-haul.jpg",
+			"provenance": "human",
+			"width": 2000,
+			"height": 1500,
+			"labeler": "assistant-provisional",
+			"notes": "Natural produce texture and ordinary overhead photograph. JPEG decoder warning; source bytes retained.",
+			"labels": {
+				"garbled_text": "absent",
+				"plastic_sheen": "absent",
+				"anatomy_errors": "absent",
+				"stock_cliche": "absent"
+			}
+		},
+		{
+			"id": "image-02",
+			"group": "avocado-blog",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/image-02.jpg",
+			"sha256": "87f9ab44cf5c45f42614077a9f9259b63352f76af601cb12e395248ff4b0bb5c",
+			"source": "https://zeke.sikelianos.com/avocado-armchair/real-avocado-armchair.jpg",
+			"provenance": "human",
+			"width": 1180,
+			"height": 1180,
+			"labeler": "assistant-provisional",
+			"notes": "Real chair with an avocado-shaped cushion. Intentional design, not a geometry defect. JPEG decoder warning; source bytes retained.",
+			"labels": {
+				"garbled_text": "absent",
+				"plastic_sheen": "absent",
+				"anatomy_errors": "absent",
+				"stock_cliche": "absent"
+			}
+		},
+		{
+			"id": "image-03",
+			"group": "avocado-blog",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/image-03.jpg",
+			"sha256": "468ff5b024d1787cc67efd12fbf05b60d57612738ae715e18192d43467af9861",
+			"source": "https://zeke.sikelianos.com/avocado-armchair/prism.jpg",
+			"provenance": "human",
+			"width": 1186,
+			"height": 1414,
+			"labeler": "assistant-provisional",
+			"notes": "Natural prismatic light on a wall. No relevant defect. JPEG decoder warning; source bytes retained.",
+			"labels": {
+				"garbled_text": "absent",
+				"plastic_sheen": "absent",
+				"anatomy_errors": "absent",
+				"stock_cliche": "absent"
+			}
+		},
+		{
+			"id": "image-04",
+			"group": "avocado-blog",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/image-04.jpg",
+			"sha256": "e8b20c138ac38192e96492bc2284d2a89cb2ead6670b6fd2681d321d6ebc9763",
+			"source": "https://zeke.sikelianos.com/avocado-armchair/ben-and-andreas.jpg",
+			"provenance": "human",
+			"width": 1186,
+			"height": 1580,
+			"labeler": "assistant-provisional",
+			"notes": "Two people at a table with coherent visible anatomy; hidden body parts are not defects. JPEG decoder warning; source bytes retained.",
+			"labels": {
+				"garbled_text": "absent",
+				"plastic_sheen": "absent",
+				"anatomy_errors": "absent",
+				"stock_cliche": "absent"
+			}
+		},
+		{
+			"id": "image-05",
+			"group": "avocado-blog",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/image-05.jpg",
+			"sha256": "8525a093699261eb245ed6ad1eeb937ddfad1c974613501a6358c897942768ad",
+			"source": "https://zeke.sikelianos.com/avocado-armchair/open-office.jpg",
+			"provenance": "human",
+			"width": 1186,
+			"height": 1580,
+			"labeler": "assistant-provisional",
+			"notes": "Documentary office interior, natural textures and specific furnishings. JPEG decoder warning; source bytes retained.",
+			"labels": {
+				"garbled_text": "absent",
+				"plastic_sheen": "absent",
+				"anatomy_errors": "absent",
+				"stock_cliche": "absent"
+			}
+		},
+		{
+			"id": "image-06",
+			"group": "avocado-generated",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/image-06.jpg",
+			"sha256": "7ed11923cccda49a64105537893043d61f74dda2379deda0ae07478ccea292c2",
+			"source": "https://zeke.sikelianos.com/avocado-armchair/sdxl-avocado-armchair.jpg",
+			"provenance": "ai",
+			"width": 768,
+			"height": 768,
+			"labeler": "assistant-provisional",
+			"notes": "Generated avocado chair, plausible upholstery detail. Ambiguous photographic versus intentional render style; do not force a sheen label. JPEG decoder warning; source bytes retained.",
+			"labels": {
+				"garbled_text": "absent",
+				"plastic_sheen": "unassessable",
+				"anatomy_errors": "absent",
+				"stock_cliche": "absent"
+			}
+		},
+		{
+			"id": "image-07",
+			"group": "avocado-generated",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/image-07.jpg",
+			"sha256": "44a0ed96fc2c0cd6b4058a27cc58aabf704b2710e99497ed9a30d6beb93b3f87",
+			"source": "https://zeke.sikelianos.com/avocado-armchair/sdxl-avocado-armchair-2.jpg",
+			"provenance": "ai",
+			"width": 768,
+			"height": 768,
+			"labeler": "assistant-provisional",
+			"notes": "Generated chair with strongly smoothed, rubbery upholstery folds in an ostensibly photographic product presentation. Sheen present is a provisional judgment. JPEG decoder warning; source bytes retained.",
+			"labels": {
+				"garbled_text": "absent",
+				"plastic_sheen": "present",
+				"anatomy_errors": "absent",
+				"stock_cliche": "present"
+			}
+		},
+		{
+			"id": "image-08",
+			"group": "avocado-generated",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/image-08.jpg",
+			"sha256": "1697570c5b542dc62581c036bd29481255bedeacb18e40538564bb1c426d29e2",
+			"source": "https://zeke.sikelianos.com/avocado-armchair/emoji-avocado-armchair.jpg",
+			"provenance": "ai",
+			"width": 1024,
+			"height": 1024,
+			"labeler": "assistant-provisional",
+			"notes": "Explicit stylized emoji/rendered chair; smoothness is intentional illustration, not a photographic defect.",
+			"labels": {
+				"garbled_text": "absent",
+				"plastic_sheen": "absent",
+				"anatomy_errors": "absent",
+				"stock_cliche": "absent"
+			}
+		},
+		{
+			"id": "image-09",
+			"group": "avocado-generated",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/image-09.jpg",
+			"sha256": "75a6087812e280da9654d1ab2a5186e325cd244ff6282ca886b1db7e779e1c4c",
+			"source": "https://zeke.sikelianos.com/avocado-armchair/dalle-avocado-armchairs.jpg",
+			"provenance": "mixed",
+			"width": 1400,
+			"height": 867,
+			"labeler": "assistant-provisional",
+			"notes": "DALL-E grid within a human-designed screenshot. Heading is readable; miniature outputs too small to judge material detail. JPEG decoder warning; source bytes retained.",
+			"labels": {
+				"garbled_text": "absent",
+				"plastic_sheen": "unassessable",
+				"anatomy_errors": "absent",
+				"stock_cliche": "absent"
+			}
+		},
+		{
+			"id": "image-10",
+			"group": "livia-art",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/image-10.jpg",
+			"sha256": "33b23c1d2825cdf3a8a001d04473757f529e550a8b9365caabfc177b7dfd436e",
+			"source": "https://zeke.sikelianos.com/livias-art-show/matilija-poppy.jpg",
+			"provenance": "human",
+			"width": 2599,
+			"height": 2484,
+			"labeler": "assistant-provisional",
+			"notes": "Hand-painted flower. Brush texture and stylization are intentional.",
+			"labels": {
+				"garbled_text": "absent",
+				"plastic_sheen": "absent",
+				"anatomy_errors": "absent",
+				"stock_cliche": "absent"
+			}
+		},
+		{
+			"id": "image-11",
+			"group": "livia-art",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/image-11.jpg",
+			"sha256": "c515bf349891a7060e66c79c8c35756bbe9bfaa30d4f6606ad7aa5e8fcd8b705",
+			"source": "https://zeke.sikelianos.com/livias-art-show/two-doggies.jpg",
+			"provenance": "human",
+			"width": 1600,
+			"height": 1600,
+			"labeler": "assistant-provisional",
+			"notes": "Hand-painted dogs. Loose forms and anatomy are deliberate fine-art stylization.",
+			"labels": {
+				"garbled_text": "absent",
+				"plastic_sheen": "absent",
+				"anatomy_errors": "absent",
+				"stock_cliche": "absent"
+			}
+		},
+		{
+			"id": "image-12",
+			"group": "livia-art",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/image-12.jpg",
+			"sha256": "226aa55892649bd00795b84c95dd20428fe367c64d9125c5b31e2f61a9e8b491",
+			"source": "https://zeke.sikelianos.com/livias-art-show/two-ladies-fruit.jpg",
+			"provenance": "human",
+			"width": 1201,
+			"height": 1600,
+			"labeler": "assistant-provisional",
+			"notes": "Hand-painted seated people. Loose anatomy is deliberate fine-art stylization.",
+			"labels": {
+				"garbled_text": "absent",
+				"plastic_sheen": "absent",
+				"anatomy_errors": "absent",
+				"stock_cliche": "absent"
+			}
+		},
+		{
+			"id": "image-13",
+			"group": "replicate-cover",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/image-13.jpg",
+			"sha256": "0edc13f4827563aea95bc37df52c156835c6ee2d71f203ef34d451f78ae9b6b0",
+			"source": "https://zeke.sikelianos.com/ten-things-i-love-about-replicate/thumbnail.jpg",
+			"provenance": "human",
+			"width": 1200,
+			"height": 900,
+			"labeler": "assistant-provisional",
+			"notes": "Human-designed cover with overlapping but readable typography and repeated portrait cutouts.",
+			"labels": {
+				"garbled_text": "absent",
+				"plastic_sheen": "absent",
+				"anatomy_errors": "absent",
+				"stock_cliche": "absent"
+			}
+		},
+		{
+			"id": "image-14",
+			"group": "npm-ui",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/image-14.png",
+			"sha256": "5db0706011793f7bd6e139f0d6ba1c6558526dbaa3f853f9004bc0c6005ed706",
+			"source": "https://zeke.sikelianos.com/npm/package-not-found.png",
+			"provenance": "human",
+			"width": 1024,
+			"height": 1254,
+			"labeler": "assistant-provisional",
+			"notes": "Screenshot of a package-not-found page. The playful words and code are readable intentional content.",
+			"labels": {
+				"garbled_text": "absent",
+				"plastic_sheen": "absent",
+				"anatomy_errors": "absent",
+				"stock_cliche": "absent"
+			}
+		},
+		{
+			"id": "image-15",
+			"group": "npm-ui",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/image-15.png",
+			"sha256": "286231816f32e4469b9691c59d084e5124f3985c29dbd8a7caa229911a298436",
+			"source": "https://zeke.sikelianos.com/npm/maintainers.png",
+			"provenance": "human",
+			"width": 312,
+			"height": 114,
+			"labeler": "assistant-provisional",
+			"notes": "Screenshot with small but intentional text, avatars and logos; do not treat tiny detail as malformed glyphs.",
+			"labels": {
+				"garbled_text": "absent",
+				"plastic_sheen": "absent",
+				"anatomy_errors": "absent",
+				"stock_cliche": "absent"
+			}
+		},
+		{
+			"id": "image-16",
+			"group": "mexico-cars",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/image-16.jpg",
+			"sha256": "0a8709c2b556afdabbb74501b6544ca422fa93672ab320c3352af62e9e6a94df",
+			"source": "https://zeke.sikelianos.com/meta-cars-of-mexico-city/IMG_9767-8gd065.jpg",
+			"provenance": "mixed",
+			"width": 1184,
+			"height": 880,
+			"labeler": "assistant-provisional",
+			"notes": "Intentional surreal car edit from a generative-art project; absent wheels are not accidental anatomy defects. Distant lettering cannot be assessed.",
+			"labels": {
+				"garbled_text": "unassessable",
+				"plastic_sheen": "absent",
+				"anatomy_errors": "absent",
+				"stock_cliche": "absent"
+			}
+		},
+		{
+			"id": "image-17",
+			"group": "mexico-cars",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/image-17.jpg",
+			"sha256": "4f682b68804fc0cd86f056f992fb5427ab4de8723676e4d8d7c554b8edee8ce9",
+			"source": "https://zeke.sikelianos.com/meta-cars-of-mexico-city/IMG_9771-bjkrxo.jpg",
+			"provenance": "mixed",
+			"width": 1184,
+			"height": 880,
+			"labeler": "assistant-provisional",
+			"notes": "Intentional surreal car edit with a coherent street scene. Distant people too small for confident anatomy assessment.",
+			"labels": {
+				"garbled_text": "unassessable",
+				"plastic_sheen": "absent",
+				"anatomy_errors": "unassessable",
+				"stock_cliche": "absent"
+			}
+		},
+		{
+			"id": "image-18",
+			"group": "slop-cannon",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/image-18.jpg",
+			"sha256": "b0d05b84c4b41563feeb811e1170f3438d5c03725b0794d5357adee672a394fd",
+			"source": "zekefake/outputs/agents-week-day5-slop-cannon/images/seg-01-b08.jpg",
+			"provenance": "ai",
+			"width": 1376,
+			"height": 768,
+			"labeler": "assistant-provisional",
+			"notes": "Generated cannon portrait. SLOP is readable; visible face coherent; hidden body is not a missing-limb error.",
+			"labels": {
+				"garbled_text": "absent",
+				"plastic_sheen": "absent",
+				"anatomy_errors": "absent",
+				"stock_cliche": "absent"
+			}
+		},
+		{
+			"id": "image-19",
+			"group": "slop-cannon",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/image-19.jpg",
+			"sha256": "80f541604093386e822830faa30305d263bbeffc6e52c0049525bf8d794e633d",
+			"source": "zekefake/outputs/agents-week-day5-slop-cannon/images/seg-01-c2.jpg",
+			"provenance": "ai",
+			"width": 1376,
+			"height": 768,
+			"labeler": "assistant-provisional",
+			"notes": "Generated cannon portrait. Both hands have coherent visible digits, face is coherent, SLOP is readable.",
+			"labels": {
+				"garbled_text": "absent",
+				"plastic_sheen": "absent",
+				"anatomy_errors": "absent",
+				"stock_cliche": "absent"
+			}
+		},
+		{
+			"id": "image-20",
+			"group": "slop-cannon",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/image-20.jpg",
+			"sha256": "2329a575233a3700f10badad782c437065236385aae7ba0ecae66221774a40e3",
+			"source": "zekefake/outputs/agents-week-day5-slop-cannon/images/seg-01-b10.jpg",
+			"provenance": "ai",
+			"width": 1376,
+			"height": 768,
+			"labeler": "assistant-provisional",
+			"notes": "Generated cannon portrait. Readable lettering and coherent visible face. Intentional surreal setup.",
+			"labels": {
+				"garbled_text": "absent",
+				"plastic_sheen": "absent",
+				"anatomy_errors": "absent",
+				"stock_cliche": "absent"
+			}
+		},
+		{
+			"id": "image-21",
+			"group": "sauna-relocations",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/image-21.jpeg",
+			"sha256": "c5fb55ec4dbb9f902d2d61e5b6bd440e6379e22549ccbfa8053f8fd6b53e08d8",
+			"source": "sauna/relocations/spa2-2026-08-25-18-18-10/g1byx9b80drmr0d07ejt05xh9w-lakeside-gravel-launch.jpeg",
+			"provenance": "ai",
+			"width": 2752,
+			"height": 1536,
+			"labeler": "assistant-provisional",
+			"notes": "Generated sauna on a lake. Specific architecture and believable wood texture; idealized lifestyle staging is ambiguous.",
+			"labels": {
+				"garbled_text": "absent",
+				"plastic_sheen": "absent",
+				"anatomy_errors": "absent",
+				"stock_cliche": "unassessable"
+			}
+		},
+		{
+			"id": "image-22",
+			"group": "sauna-relocations",
+			"split": "development",
+			"modality": "image",
+			"file": ".local/assets/image-22.jpeg",
+			"sha256": "2748e52ae7d03523752da4186837260b11a618baa55e0946a10b630cf5cf778e",
+			"source": "sauna/relocations/spa2-2026-08-25-18-18-10/sszacnbthsrmw0d07ekbybvm2m-warehouse-yard-corrugated.jpeg",
+			"provenance": "ai",
+			"width": 2752,
+			"height": 1536,
+			"labeler": "assistant-provisional",
+			"notes": "Generated sauna outside warehouse. Specific construction details and believable materials; no obvious defects.",
+			"labels": {
+				"garbled_text": "absent",
+				"plastic_sheen": "absent",
+				"anatomy_errors": "absent",
+				"stock_cliche": "absent"
+			}
+		},
+		{
+			"id": "veo-720",
+			"group": "slop-cannon",
+			"split": "development",
+			"modality": "video",
+			"file": ".local/assets/veo-720.mp4",
+			"sha256": "b96355dbcaff0088d3b33eca03b727444d4c555d9c46771716a7376bf0ee0b8d",
+			"source": "zekefake/outputs/agents-week-day5-slop-cannon/segments/veo31-audio.mp4",
+			"provenance": "ai",
+			"width": 1280,
+			"height": 720,
+			"durationSeconds": 8.0,
+			"labeler": "assistant-provisional",
+			"notes": "Unlabeled video probe. All factors excluded from accuracy metrics until full temporal review.",
+			"labels": {
+				"garbled_text": "unassessable",
+				"plastic_sheen": "unassessable",
+				"anatomy_errors": "unassessable",
+				"stock_cliche": "unassessable",
+				"temporal_morphing": "unassessable"
+			}
+		},
+		{
+			"id": "veofast-720",
+			"group": "slop-cannon",
+			"split": "development",
+			"modality": "video",
+			"file": ".local/assets/veofast-720.mp4",
+			"sha256": "1df4fadbae0a4d73ad08047629a7bef6fc7bd7eb3fcbad10e42c3abb9ccc081c",
+			"source": "zekefake/outputs/agents-week-day5-slop-cannon/segments/veo31fast-audio.mp4",
+			"provenance": "ai",
+			"width": 1280,
+			"height": 720,
+			"durationSeconds": 8.0,
+			"labeler": "assistant-provisional",
+			"notes": "Unlabeled video probe. All factors excluded from accuracy metrics until full temporal review.",
+			"labels": {
+				"garbled_text": "unassessable",
+				"plastic_sheen": "unassessable",
+				"anatomy_errors": "unassessable",
+				"stock_cliche": "unassessable",
+				"temporal_morphing": "unassessable"
+			}
+		},
+		{
+			"id": "swagger-screen",
+			"group": "swagger-ui",
+			"split": "development",
+			"modality": "video",
+			"file": ".local/assets/swagger-screen.mp4",
+			"sha256": "8a187d856358ab1cfbc4bfd965faab0cafdccf38f897337f60a3c9b0f48e28a9",
+			"source": "zeke.sikelianos.com/content/swagger/swagger.mp4",
+			"provenance": "human",
+			"width": 474,
+			"height": 346,
+			"durationSeconds": 1.468,
+			"labeler": "assistant-provisional",
+			"notes": "Unlabeled video probe. All factors excluded from accuracy metrics until full temporal review.",
+			"labels": {
+				"garbled_text": "unassessable",
+				"plastic_sheen": "unassessable",
+				"anatomy_errors": "unassessable",
+				"stock_cliche": "unassessable",
+				"temporal_morphing": "unassessable"
+			}
+		}
+	]
+}
