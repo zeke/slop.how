@@ -189,6 +189,10 @@ All three miss single mild instances of rhetorical_qa, reflexive_triplets, and s
   next steps: `evaluation/media/FINDINGS.md`. Draft questions and
   validated schemas: `script/media-eval/core.ts`. Production text factors and
   endpoints are unchanged by this experiment.
+- `script/review-media prepare <manifest.json> <new-output-dir>` makes a local
+  review page with original media and blank labels, hiding scores and provenance.
+  `apply <manifest.json> <review.json> <new-manifest.json>` validates human exports
+  and writes a separate manifest. Keep review media and drafts in `.local/`.
 - Keep labels independent of model scores and provenance. Related media must
   stay in the same source group/split. Assistant labels are provisional; only
   human-reviewed independent held-out groups can support the launch gate.

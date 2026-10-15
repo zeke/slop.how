@@ -80,6 +80,17 @@ sequential. This is not a controlled model-speed benchmark.
 No factor has met the launch gate. The result supports another focused evaluation
 round; it does not yet support building the public media endpoint.
 
+## Review preparation (2026-10-14)
+
+The 25-sample base pilot now has a local human-review workflow through
+`script/review-media`. It presents original images and videos with blank
+judgments and the rubric, hiding prior labels, model scores, provenance, and
+identifying filenames. Completed reviews can be applied to a separate manifest
+without repeating inference. See the review instructions in `README.md`.
+
+No labels have been human-reviewed yet. This follow-up adds no inference calls
+or launch evidence; the next steps and recommendation above still apply.
+
 ## Evidence
 
 - `pilot.json` and `resolution.json`: source references, hashes, group membership,

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Prepare a blind local review or apply exported human labels.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+node script/media-eval/review-cli.ts "$@"

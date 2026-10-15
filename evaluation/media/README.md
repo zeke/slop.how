@@ -69,6 +69,41 @@ fingerprint. Preserve old results and budget for a separate experiment. Label
 corrections can be assessed offline with `summarize`; they do not require new
 inference. Recheck current provider prices before each new evaluation session.
 
+## Human label review
+
+Prepare a local review page without inference:
+
+```sh
+script/review-media prepare evaluation/media/pilot.json evaluation/media/.local/pilot-review
+open evaluation/media/.local/pilot-review/index.html
+```
+
+The page shows the original media and current rubric. It hides source paths,
+provenance, assistant labels, and model scores. This reduces anchoring, but a
+reviewer may recognize the media or have already seen the pilot results.
+Source bytes are hash-checked and copied into the review folder without resizing.
+Keep that folder local; it contains the source media.
+
+Enter your name, a judgment, and a reason for each applicable factor. Watch
+videos at normal speed and include defect timestamps in the reasons. Drafts
+stay in browser storage; export completed samples to retain a file. Incomplete
+samples are omitted from the export. No answer is selected by default.
+
+Apply the downloaded review to a new manifest:
+
+```sh
+script/review-media apply evaluation/media/pilot.json ~/Downloads/media-review.json evaluation/media/.local/pilot-reviewed.json
+```
+
+The importer checks manifest identity, question version, sample hashes, and
+complete labels before marking a sample human-reviewed. It preserves unreviewed
+samples, records the reviewer's name and reasons, and rebases asset paths.
+It refuses to overwrite an existing output. Keep the exported review alongside
+the new manifest. The frozen inference results and original manifest stay intact;
+use the existing `summarize` function with reviewed samples and recorded results
+to recompute metrics without inference. Human review does not turn development
+samples into held-out evidence.
+
 ## Pilot limitations
 
 `pilot.json` is a development corpus. Its labels were assigned by an assistant
