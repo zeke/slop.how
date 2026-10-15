@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>slop.how · Media review</title>
+  <style>
+    :root { color-scheme: dark; font: 16px/1.5 system-ui, sans-serif; background: #151519; color: #efedf0; }
+    body { margin: 0 auto; padding: 24px; max-width: 1600px; }
+    h1 { font-size: 24px; margin: 0; } h2 { font-size: 18px; }
+    p { max-width: 85ch; } button, input, select, textarea { font: inherit; color: inherit; background: #25252b; border: 1px solid #71717c; border-radius: 5px; padding: 8px; }
+    button { cursor: pointer; } button:disabled { opacity: .4; cursor: default; }
+    :focus-visible { outline: 3px solid #ff81bb; outline-offset: 3px; }
+    nav { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin: 20px 0; }
+    main { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(320px, 1fr); gap: 24px; }
+    #media { position: sticky; top: 20px; align-self: start; }
+    img, video { width: 100%; max-height: 80vh; object-fit: contain; background: #08080b; }
+    fieldset { margin: 0 0 16px; border: 1px solid #555560; border-radius: 8px; padding: 14px; }
+    legend { color: #ff92c4; } fieldset p { font-size: 14px; color: #c5c1ca; margin: 5px 0 10px; }
+    label { display: block; margin-top: 10px; } textarea { box-sizing: border-box; width: 100%; min-height: 65px; }
+    #status { color: #f9bcda; } #storage-status { color: #d9b77b; }
+    @media (max-width: 800px) { main { grid-template-columns: 1fr; } #media { position: static; } body { padding: 16px; } }
+  </style>
+</head>
+<body>
+  <h1>Media review</h1>
+  <p>Judge visible defects using the rubric. Model scores, provenance, and earlier labels are hidden. Choose “Cannot assess” when detail or intent is unclear. No visible text or body generally means the corresponding defect is absent.</p>
+  <p>For videos, watch the whole clip at normal speed, then scrub for details. Include timestamps in your reasons. Ordinary cuts, occlusion, and deliberate animation are not temporal defects.</p>
+  <label for="reviewer">Your name</label><input id="reviewer" autocomplete="name">
+  <nav aria-label="Review navigation">
+    <button id="previous" type="button">Previous</button>
+    <label for="sample">Sample</label><select id="sample"></select>
+    <button id="next" type="button">Next</button>
+    <button id="export" type="button" disabled>Export completed reviews</button>
+  </nav>
+  <p id="status" role="status"></p><p id="storage-status" role="status"></p>
+  <main><section id="media" aria-label="Media sample"></section><section id="judgments" aria-label="Factor judgments"></section></main>
+  <script id="review-data" type="application/json">"__REVIEW_DATA__"</script>
+  <script>
+    const data = JSON.parse(document.getElementById("review-data").textContent);
+    const key = `slop-review:${data.manifestHash}:${data.questionVersion}`;
+    let draft = { reviewer: "", samples: {} };
+    const storageStatus = document.getElementById("storage-status");
+    try {
+      const saved = localStorage.getItem(key);
+      if (saved) draft = JSON.parse(saved);
+    } catch {
+      storageStatus.textContent = "Browser drafts are unavailable. Keep this tab open and export before leaving.";
+    }
+    const picker = document.getElementById("sample");
+    const reviewer = document.getElementById("reviewer");
+    reviewer.value = draft.reviewer;
+    let current = 0;
+    const titles = { garbled_text: "Garbled lettering", plastic_sheen: "Material sheen", anatomy_errors: "Anatomy errors", stock_cliche: "Stock composition", temporal_morphing: "Temporal morphing" };
+    for (const [index, sample] of data.samples.entries()) picker.add(new Option(`${index + 1} · ${sample.id}`, String(index)));
+    function complete(sample) {
+      return sample.factors.every(id => {
+        const judgment = draft.samples[sample.id]?.[id];
+        return judgment?.label && judgment.reason?.trim();
+      });
+    }
+    function updateStatus() {
+      const count = data.samples.filter(complete).length;
+      document.getElementById("status").textContent = `${count} of ${data.samples.length} samples complete. Export includes only samples with a judgment and reason for every factor.`;
+      document.getElementById("export").disabled = !count || !draft.reviewer.trim();
+    }
+    function save() {
+      try {
+        localStorage.setItem(key, JSON.stringify(draft));
+        storageStatus.textContent = "Draft saved in this browser. Export to keep a file.";
+      } catch {
+        storageStatus.textContent = "Could not save the browser draft. Export before closing this tab.";
+      }
+      updateStatus();
+    }
+    function render() {
+      const sample = data.samples[current];
+      picker.value = String(current);
+      document.getElementById("previous").disabled = current === 0;
+      document.getElementById("next").disabled = current === data.samples.length - 1;
+      const media = document.createElement(sample.modality === "video" ? "video" : "img");
+      media.src = sample.media;
+      if (sample.modality === "video") { media.controls = true; media.preload = "metadata"; }
+      else { media.alt = `Review sample ${current + 1}`; }
+      document.getElementById("media").replaceChildren(media);
+      const judgments = document.getElementById("judgments");
+      judgments.replaceChildren();
+      draft.samples[sample.id] ??= {};
+      for (const id of sample.factors) {
+        const rubric = data.factors[id];
+        const fieldset = document.createElement("fieldset");
+        const legend = document.createElement("legend"); legend.textContent = titles[id]; fieldset.append(legend);
+        for (const text of [rubric.instructions, `Present: ${rubric.criteria.true}`, `Absent: ${rubric.criteria.false}`]) {
+          const p = document.createElement("p"); p.textContent = text; fieldset.append(p);
+        }
+        const selectLabel = document.createElement("label"); selectLabel.textContent = "Judgment"; selectLabel.htmlFor = `${id}-label`;
+        const select = document.createElement("select"); select.id = `${id}-label`;
+        for (const [value, title] of [["", "Choose a judgment"], ["present", "Present"], ["absent", "Absent"], ["unassessable", "Cannot assess"]]) select.add(new Option(title, value));
+        const reasonLabel = document.createElement("label"); reasonLabel.textContent = "What do you see?"; reasonLabel.htmlFor = `${id}-reason`;
+        const reason = document.createElement("textarea"); reason.id = `${id}-reason`;
+        select.value = draft.samples[sample.id][id]?.label ?? "";
+        reason.value = draft.samples[sample.id][id]?.reason ?? "";
+        const change = () => { draft.samples[sample.id][id] = { label: select.value, reason: reason.value }; save(); };
+        select.addEventListener("change", change); reason.addEventListener("input", change);
+        fieldset.append(selectLabel, select, reasonLabel, reason); judgments.append(fieldset);
+      }
+      updateStatus();
+    }
+    reviewer.addEventListener("input", () => { draft.reviewer = reviewer.value; save(); });
+    picker.addEventListener("change", () => { current = Number(picker.value); render(); });
+    document.getElementById("previous").addEventListener("click", () => { current--; render(); });
+    document.getElementById("next").addEventListener("click", () => { current++; render(); });
+    document.getElementById("export").addEventListener("click", () => {
+      const review = { manifestHash: data.manifestHash, questionVersion: data.questionVersion, reviewer: draft.reviewer.trim(), samples: data.samples.filter(complete).map(sample => ({ id: sample.id, sha256: sample.sha256, labels: draft.samples[sample.id] })) };
+      const url = URL.createObjectURL(new Blob([JSON.stringify(review, null, 2)], { type: "application/json" }));
+      const link = document.createElement("a"); link.href = url; link.download = "media-review.json"; link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    });
+    render();
+  </script>
+</body>
+</html>

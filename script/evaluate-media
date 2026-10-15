@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Run the local, budgeted media evaluation. Defaults to a free preflight.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+node script/media-eval/run.ts "$@"
